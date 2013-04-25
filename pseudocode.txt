@@ -29,6 +29,7 @@ Disadvantage: Wrong, certain data sets could really punish it
 				ex: say we have task 1,2,3,400 and machines 1,2,300
 					machine 1 would be assigned to 400 task
 					going the reverse way, causes the same issue (not much workaround)
+Other possibilities: add "squeeze" - harder to implement but more reliable
 =============================================
 (b)
 # include the quicksort library to sort tasks from least to greatest value

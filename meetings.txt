@@ -25,10 +25,13 @@ POSSIBLE METHODS:
 			- increase it the least out of adding it to any machine
 		- Problem:
 			- will generally produce correct answer, but it won't 'consistently
-	d. Make the code that will sort the task processing items in order and machine speeds in order; then take the tasks with the smallest speeds and put them in the machines with the lowest speeds and vice versa
 =============================================
 April 25, 2013
 =============================================
 - Assume using C for now, bump up into C++ only if we are going to template and stuff
 	- C is fastest high level language.
--See Pseudocode
+- See pseudocode.txt
+- In c, instead of reconstructing currentWorstTime we can use Dynamic Programming so that we don't' have to recalculate it every single time
+	- save us basic arithmetic operations
+	- concept is there
+	- lower constants
