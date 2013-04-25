@@ -1,0 +1,34 @@
+April 24, 2013;
+=============================================
+- <b>A <i>direct</i> dynamic approach is not suitable for this project</b>
+	- It could still happen, but then we would have to modify the problem a different way.
+- The cost of the solution
+	- We can solve it, but just not in a timely manner
+	- How important is correct vs timely?
+			- Timely > Correct
+- Therefore we want to do a naive and greedy approach so that we can get a good answer in a timely  manner
+- All the processes are of equal priority
+- Get them all done at the same time in a timely manner
+
+POSSIBLE METHODS:
+---------------------------------------------
+	a. Sort process times, lowest to highest and then take the first element assign it to the slowest machine, the next to the next slowest or even the reverse and keep doing this until you assign every single one
+		- This is not correct
+		- Can be done in O(nlogn)
+	b. Add up all the machine speeds and then determine each machine's 'speed ratio'' (inidividual speed/total machines speed)
+		- Ex: M1 in gets 1/3 of the processing time, and M2 gets 2/3 of it
+			Then we add processes to each machine until the machine has about 1/3 of the total process time, and repeat that for each machine and just keep going and going with all available machines
+		- Works for fairly random data set, but would break for an ordered data set
+	c. A nearest neighbor approach to this problem (to TSP). 
+		- At any given moment, assign the next task to a machine that will either:
+			- not increase it
+			- increase it the least out of adding it to any machine
+		- Problem:
+			- will generally produce correct answer, but it won't 'consistently
+	d. Make the code that will sort the task processing items in order and machine speeds in order; then take the tasks with the smallest speeds and put them in the machines with the lowest speeds and vice versa
+=============================================
+April 25, 2013
+=============================================
+- Assume using C for now, bump up into C++ only if we are going to template and stuff
+	- C is fastest high level language.
+-See Pseudocode
