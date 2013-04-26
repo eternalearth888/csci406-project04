@@ -44,8 +44,11 @@ int** computeTime(int* tasks, int* machines, int taskSize, int machineSize) {
 
 	for (int i = 0; i < taskSize; i++) {
 		int hasAssigned = 0; //bool for checking if we have assigned a task
+		printf("Task %i has the time %i\n", i, tasks[i]);
 		for (int j = 0; j < machineSize; j++) {
+			printf("At machine %i\n", j); 
 			if (timeAfterTask(machinesTasks[j], machines[j], tasks, i) <= currentWorstTime && hasAssigned == 0) {
+				printf("No increase, assigned Task %i to machine %i\n", i, j);
 				appendToMachine(machinesTasks[j], i);
 				hasAssigned = 1;
 			}
@@ -54,12 +57,15 @@ int** computeTime(int* tasks, int* machines, int taskSize, int machineSize) {
 				float lowestIncrease = 999999999999999; // A large number
 				int lowestMachine = 0;
 				for (int j = 0; j < machineSize; j++) {
-					if (timeAfterTask(machinesTasks[j], machines[j], tasks, i) < lowestIncrease) {
-						lowestIncrease = timeAfterTask(machinesTasks[j], machines[j], tasks, i);
+					if ((currentWorstTime - timeAfterTask(machinesTasks[j], machines[j], tasks, i)) < lowestIncrease) {
+						lowestIncrease = currentWorstTime - timeAfterTask(machinesTasks[j], machines[j], tasks, i);
 						lowestMachine = j;
 					}
 				}
+			printf("Increase occured, assigned Task %i, to machine %i\n", i, lowestMachine);
+			printf("CurrentWorstTime is currently %f", currentWorstTime);
 		    currentWorstTime = currentWorstTime + timeAfterTask(machinesTasks[lowestMachine], machines[lowestMachine], tasks, i);
+		    printf("  CurrentWorstTime is now %f\n", currentWorstTime);
 			appendToMachine(machinesTasks[lowestMachine], i);
 		}
 	}
