@@ -55,13 +55,27 @@ int main(int argc, char **argv) {
 
 	if (verbose) puts("\nTask assignments:\n");
 
+	float maxCost = 0;
+
 	for (int i = 0; i < machineSize; i++) {
 		if (verbose) printf("  Machine %d has tasks:", i + 1);
 
-		for (int j = 0; machineTasks[i][j]; j++) {
-			printf("%s%d", (i ? " " : ""), machineTasks[i][j] + 1);
+		float machineCost = 0;
+
+		for (int j = 0; machineTasks[i][j] != -1; j++) {
+			machineCost += tasks[machineTasks[i][j]];
+			printf("%s%d", (j ? " " : ""), machineTasks[i][j] + 1);
 		}
+
+		machineCost /= machines[i];
+		if (machineCost > maxCost) maxCost = machineCost;
 
 		puts("\n");
 	}
+
+	if (verbose) printf("Maximum cost: ");
+
+	printf("%.4f\n", maxCost);
+
+	return 0;
 }
