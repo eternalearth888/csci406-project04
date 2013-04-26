@@ -87,3 +87,9 @@ return currentWorstTime;
 ---------------------------------------------
 Advantage: a greedy approach that will, like TSP NN, in nearly every random set will produce an almost optimal answer
 Disadvantage: it has to be O(n*m^2) and the most difficult to implement
+=============================================
+(d)
+
+sort(tasks)
+
+dynamic programming approach to assigning the tasks to linear partitions WITHOUT swappin'.
