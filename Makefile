@@ -1,4 +1,4 @@
-CFLAGS=-ggdb3
+CFLAGS=-ggdb3 -std=c99
 
 .PHONY: all prepare
 
