@@ -10,5 +10,5 @@ build:
 build/%.o: src/%.c
 	$(CC) $(CFLAGS) -c $^ -o $@
 
-build/algowars: build/main.o build/data_loader.o
+build/algowars: build/main.o build/data_loader.o build/magic.o
 	$(CC) $(CFLAGS) $^ -o $@
