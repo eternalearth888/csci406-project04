@@ -58,7 +58,7 @@ int main(int argc, char **argv) {
 	float maxCost = 0;
 
 	for (int i = 0; i < machineSize; i++) {
-		if (verbose) printf("  Machine %d has tasks:", i + 1);
+		if (verbose) printf("  Machine %d has tasks: ", i + 1);
 
 		float machineCost = 0;
 
