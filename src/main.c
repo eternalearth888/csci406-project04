@@ -75,7 +75,7 @@ int main(int argc, char **argv) {
 
 	if (verbose) printf("Maximum cost: ");
 
-	printf("%.4f\n", maxCost);
+	printf("%.4g\n", maxCost);
 
 	return 0;
 }
