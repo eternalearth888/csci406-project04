@@ -3,6 +3,7 @@
 #include <string.h>
 
 #include "data_loader.h"
+#include "magic.h"
 
 int main(int argc, char **argv) {
 	if (argc > 2) {
@@ -36,5 +37,19 @@ int main(int argc, char **argv) {
 
 	for (int i = 0; i < machineSize; i++) {
 		printf("  %d\n", machines[i]);
+	}
+
+	int **machineTasks = computeTime(tasks, machines, taskSize, machineSize);
+
+	puts("\nTask assignments:\n");
+
+	for (int i = 0; i < machineSize; i++) {
+		printf("  Machine %d:", i + 1);
+
+		for (int j = 0; machineTasks[i][j]; j++) {
+			printf(" %d", machineTasks[i][j] + 1);
+		}
+
+		puts("\n");
 	}
 }
