@@ -53,7 +53,7 @@ int main(int argc, char **argv) {
 
 	int **machineTasks = computeTime(tasks, machines, taskSize, machineSize);
 
-	if (verbose) puts("\nTask assignments:\n");
+	if (verbose) printf("\nTask assignments:\n");
 
 	float maxCost = 0;
 
@@ -70,7 +70,7 @@ int main(int argc, char **argv) {
 		machineCost /= machines[i];
 		if (machineCost > maxCost) maxCost = machineCost;
 
-		puts("\n");
+		printf("\n");
 	}
 
 	if (verbose) printf("Maximum cost: ");
