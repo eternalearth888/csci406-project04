@@ -62,7 +62,7 @@ int main(int argc, char **argv) {
 
 		float machineCost = 0;
 
-		for (int j = 0; machineTasks[i][j] != -1; j++) {
+		for (int j = 0; j < taskSize && machineTasks[i][j] != -1; j++) {
 			machineCost += tasks[machineTasks[i][j]];
 			printf("%s%d", (j ? " " : ""), machineTasks[i][j] + 1);
 		}
