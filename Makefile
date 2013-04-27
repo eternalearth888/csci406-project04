@@ -1,4 +1,5 @@
-CFLAGS=-ggdb3 -std=c99 -lm
+CFLAGS=-ggdb3 -std=c99
+LDFLAGS=-lm
 
 .PHONY: all prepare
 
@@ -16,4 +17,4 @@ build/algowars: build/main.o build/data_loader.o build/magic.o
 	$(CC) $(CFLAGS) $^ -o $@
 
 build/algowars_annealing: build/main.o build/data_loader.o build/magic_annealing.o
-	$(CC) $(CFLAGS) $^ -o $@
+	$(CC) $(CFLAGS) $^ -o $@ $(LDFLAGS)
