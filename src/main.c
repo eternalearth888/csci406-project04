@@ -1,12 +1,14 @@
 #include <errno.h>
 #include <stdbool.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 
 #include "data_loader.h"
 #include "magic.h"
 
 int main(int argc, char **argv) {
+	int precision = 100;
 	char *progname = argv[0];
 	bool verbose = false;
 
@@ -16,8 +18,14 @@ int main(int argc, char **argv) {
 		argv++;
 	}
 
+	if (argc >= 2 && atoi(argv[1])) {
+		precision = atoi(argv[1]);
+		argc--;
+		argv++;
+	}
+
 	if (argc > 2) {
-		fprintf(stderr, "Usage: %s [FILENAME]\n", progname);
+		fprintf(stderr, "Usage: %s [PRECISION] [FILENAME]\n", progname);
 		return 1;
 	}
 
@@ -51,7 +59,7 @@ int main(int argc, char **argv) {
 		}
 	}
 
-	int **machineTasks = computeTime(tasks, machines, taskSize, machineSize);
+	int **machineTasks = computeTime(tasks, machines, taskSize, machineSize, precision);
 
 	if (verbose) printf("\nTask assignments:\n");
 

@@ -93,7 +93,7 @@ static float temperature(int round, int roundMax) {
 	return 50 * (1 - round / (float) roundMax);
 }
 
-int** computeTime(int* tasks, int* machines, int taskSize, int machineSize) {
+int** computeTime(int* tasks, int* machines, int taskSize, int machineSize, int precision) {
 	srand(time(NULL));
 
 	// All states are stored as arrays of 8-bit integers, giving the machine ID that each task is
@@ -114,7 +114,7 @@ int** computeTime(int* tasks, int* machines, int taskSize, int machineSize) {
 	memcpy(best, state, taskSize);
 	bestCost = curCost;
 
-	int roundMax = 1000;
+	int roundMax = taskSize * machineSize * precision;
 
 	for (int round = 0; round < roundMax; round++) {
 		getNeighbor(neighbor, state, taskSize, machineSize);
