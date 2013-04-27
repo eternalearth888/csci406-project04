@@ -1,4 +1,4 @@
-CFLAGS=-ggdb3 -std=c99
+CFLAGS=-ggdb3 -std=c99 -Werror=implicit-function-declaration
 LDFLAGS=-lm
 
 .PHONY: all clean

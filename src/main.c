@@ -3,12 +3,18 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <sys/time.h>
 
 #include "data_loader.h"
 #include "magic.h"
 
 int main(int argc, char **argv) {
-	int precision = 100;
+	struct timeval tv;
+	gettimeofday(&tv, NULL);
+
+	srand(tv.tv_sec + tv.tv_usec);
+
+	int precision = 50;
 	char *progname = argv[0];
 	bool verbose = false;
 
