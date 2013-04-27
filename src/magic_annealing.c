@@ -4,7 +4,11 @@
 #include <string.h>
 #include <time.h>
 
-// Simple, undershooting division of tasks in given order
+/**
+ * Simple, undershooting division of tasks in given order
+ * This gives a start state that divides the tasks roughly evenly, which if not optimal shouldn't be
+ * bad
+ * */
 static void getStart(int8_t *state, int* tasks, int* machines, int taskSize, int machineSize) {
 	int remainingTime = 0;
 	for (int i = 0; i < taskSize; i++) remainingTime += tasks[i];
@@ -25,12 +29,16 @@ static void getStart(int8_t *state, int* tasks, int* machines, int taskSize, int
 			taskId++;
 		}
 
+		// Give time to next machine to allocate
 		underShoot = to_allocate - allocated;
 	}
 
 	if (underShoot) state[taskId] = machineId - 1;
 }
 
+/**
+ * Get a slight variation of the current state, by assigning one of the tasks to a different machine
+ */
 static void getNeighbor(int8_t *neighbor, int8_t* state, int taskSize, int machineSize) {
 	// Loop until we make an actual change
 	memcpy(neighbor, state, taskSize);
@@ -43,6 +51,10 @@ static void getNeighbor(int8_t *neighbor, int8_t* state, int taskSize, int machi
 	} while (neighbor[i] == orig);
 }
 
+/**
+ * Get the cost of the given state, computed by the maximum time spent by any given machine working
+ * on its assigned tasks
+ */
 static float cost(int8_t *state, int* tasks, int* machines, int taskSize, int machineSize) {
 	float machineCosts[machineSize];
 	for (int i = 0; i < machineSize; i++) machineCosts[i] = 0;
@@ -60,6 +72,12 @@ static float cost(int8_t *state, int* tasks, int* machines, int taskSize, int ma
 	return maxCost;
 }
 
+/**
+ * Find the probability that the algorithm will switch to the neighbor state.
+ * This is automatically 1 if the neighbor is a better solution. Otherwise, it starts and 1 and
+ * increases proportional to on the current temperature, and decreases proportional to the
+ * difference between the neighbor's cost and the current state's cost.
+ */
 static float switchProbability(float temp, float curCost, float neighborCost) {
 	if (curCost > neighborCost) {
 		return 1;
@@ -68,6 +86,9 @@ static float switchProbability(float temp, float curCost, float neighborCost) {
 	}
 }
 
+/**
+ * Simple linear decrease from 50 at start to 0 at end.
+ */
 static float temperature(int round, int roundMax) {
 	return 50 * (1 - round / (float) roundMax);
 }
@@ -75,6 +96,8 @@ static float temperature(int round, int roundMax) {
 int** computeTime(int* tasks, int* machines, int taskSize, int machineSize) {
 	srand(time(NULL));
 
+	// All states are stored as arrays of 8-bit integers, giving the machine ID that each task is
+	// assigned to, in order.
 	int8_t best[taskSize];
 	float bestCost = 0;
 
@@ -108,7 +131,7 @@ int** computeTime(int* tasks, int* machines, int taskSize, int machineSize) {
 		}
 	}
 
-	// Simple, dumb transformation to expected result format
+	// Simple, slow but one-time transformation to expected result format
 	int **machinesTasks = malloc(machineSize * sizeof(int*));
 	for (int8_t i = 0; i < machineSize; i++) {
 		machinesTasks[i] = malloc(taskSize * sizeof(int));
