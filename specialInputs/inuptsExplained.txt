@@ -1,0 +1,35 @@
+This file explains the structure of each input file. 
+
+general file name is either a small description of what it is or a x-y where x is tasks and y is machines
+
+1-1: A one task one machine test
+ 
+1-1fast: A fast machine with one task
+
+1-1slow: a slow machine with one task
+
+30-1: 30 tasks to one machine
+
+30-1fast: with fast machine
+
+1-30: 1 task many machines
+
+1-30long: 1 long task many machines
+
+40-20: for testing whether it scales off machines or tasks more
+
+20-40: ""
+
+30-5skewed: test how it handles lots of short tasks with one or two really long tasks
+
+30-5machineSkewed: test how it handles tasks around same length with machines all of same speed with one or two machines being much faster
+
+30-5skewedReversed: test the skew set but with lots of long tasks and one short
+
+30-5machineSkewedReversed: test the machine skew but with lots of fast machines and one slow machine
+
+20-10same: all tasks and machines are equal speed/length
+
+10-20same: "" 
+
+
