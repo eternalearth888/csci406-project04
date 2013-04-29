@@ -1,0 +1,15 @@
+1-1: nothing unexpected
+1-1fast: ""
+1-slow: ""
+30-1: revelead a flaw in neighboring logic, made a simple hack to fix, in the get neighbor function, will only loop through if the neihbor is the same and the machine size is not 1
+30-1fast: after revisions, no unexpected behaviors
+1-30: nothing unexpected
+1-30long: nothing unexpected
+40-20: seems to scale more off tasks then machines
+20-40: ""
+30-5skewed: no unexpected results
+30-5machineSkewed: ""
+30-5skewedReversed: ""
+30-5machineSkewedReversed: ""
+20-10same: gets it mostly right, has trouble getting the result to be 100% accurate, requires a precison of around 400 before becoming correct about 50% of the time
+10-20same: nothing unexpected

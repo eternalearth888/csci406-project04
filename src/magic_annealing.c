@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
+#include <stdio.h>
 
 /**
  * Simple, undershooting division of tasks in given order
@@ -48,7 +49,7 @@ static void getNeighbor(int8_t *neighbor, int8_t* state, int taskSize, int machi
 		i = rand() % taskSize;
 		orig = neighbor[i];
 		neighbor[i] = rand() % machineSize;
-	} while (neighbor[i] == orig);
+	} while (neighbor[i] == orig && machineSize != 1);
 }
 
 /**
