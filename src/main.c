@@ -72,13 +72,13 @@ int main(int argc, char **argv) {
 	float maxCost = 0;
 
 	for (int i = 0; i < machineSize; i++) {
-		if (verbose) printf("  Machine %d has tasks: ", i + 1);
+		if (verbose) printf("  Machine %d has tasks: ", i);
 
 		float machineCost = 0;
 
 		for (int j = 0; j < taskSize && machineTasks[i][j] != -1; j++) {
 			machineCost += tasks[machineTasks[i][j]];
-			printf("%s%d", (j ? " " : ""), machineTasks[i][j] + 1);
+			printf("%s%d", (j ? " " : ""), machineTasks[i][j]);
 		}
 
 		machineCost /= machines[i];
