@@ -3,8 +3,8 @@ inputFile = open(sys.argv[1], "r")
 text = inputFile.readlines();
 inputFile.close();
 tasksAssigned = []
-machineSpeeds = [1, 2, 1]
-taskTimes = [10, 10, 10, 10, 10, 10]
+machineSpeeds = [1, 1, 1, 1, 1, 1, 1 ,1 ,1, 1]
+taskTimes = [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2 ,2 ,2, 2]
 for i in range(0, len(text)-1):
 	derp = []
 	splitText = text[i].split()
