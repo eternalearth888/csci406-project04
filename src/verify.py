@@ -13,14 +13,15 @@ for i in range(0, len(text)-1):
 			derp.append(int(number))
 	tasksAssigned.append(derp)
 givenCost = float(text[len(text)-1].split()[0])
-currentCost = 0
+maxCost = 0
 for machine in range(0, len(tasksAssigned)):
 	machineTime = 0
 	for task in tasksAssigned[machine]:
 		machineTime += (float(taskTimes[task])/machineSpeeds[machine])
-	currentCost += machineTime
+	if maxCost < machineTime:
+		maxCost = machineTime
 
-if currentCost != givenCost:
+if maxCost != givenCost:
 	print "\nNOT VALID\n"
 else:
 	print "\nVALID\n"
